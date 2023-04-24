@@ -41,7 +41,6 @@ class PhotoGalleryViewModel : ViewModel() {
         }
     }
 
-
     fun setQuery(query: String) {
         viewModelScope.launch { preferencesRepository.setStoredQuery(query) }
     }

@@ -7,9 +7,9 @@ import okhttp3.Response
 
 private const val API_KEY = "b126613a39e0d102a114ca84db267fd9"
 
-class PhotoInterceptor: Interceptor{
+class PhotoInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val originalRequest : Request = chain.request()
+        val originalRequest: Request = chain.request()
 
         val newUrl: HttpUrl = originalRequest.url.newBuilder()
             .addQueryParameter("api_key", API_KEY)
@@ -25,5 +25,4 @@ class PhotoInterceptor: Interceptor{
 
         return chain.proceed(newRequest)
     }
-
 }

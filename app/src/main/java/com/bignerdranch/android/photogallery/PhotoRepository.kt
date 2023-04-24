@@ -1,6 +1,5 @@
 package com.bignerdranch.android.photogallery
 
-import android.provider.ContactsContract.Contacts.Photo
 import com.bignerdranch.android.photogallery.api.FlickrApi
 import com.bignerdranch.android.photogallery.api.GalleryItem
 import com.bignerdranch.android.photogallery.api.PhotoInterceptor
@@ -13,14 +12,14 @@ class PhotoRepository {
     private val flickrApi: FlickrApi
 
     init {
-        val okhttpClient = OkHttpClient.Builder()
+        val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(PhotoInterceptor())
             .build()
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://api.flickr.com/")
             .addConverterFactory(MoshiConverterFactory.create())
-            .client(okhttpClient)
+            .client(okHttpClient)
             .build()
         flickrApi = retrofit.create()
     }
